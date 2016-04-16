@@ -1,0 +1,24 @@
+<!-- home.html -->
+
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %}Welcome to Django{% endblock %}
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/home.css '%}"
+{% endblock %}
+{% block content %}
+    <h1> Welcome {{ user.username }} !!! </h1>
+    <h2>{{user.userprofile.age}}</h2>
+    <h2>{{user.userprofile.state}}</h2>
+    <h2>{{user.userprofile.category}}</h2>
+    {% if query_list %}
+    {% for obj in query_list %}
+    <h1>Scholarships Available for you </h1>
+    <h2>Scholarship Amount : {{ obj.option_amount }}</h2>
+    <h2>Scholarship Name : {{ obj.option_name }}</h2>
+    {% endfor %}
+    {% else %}
+    <h2> <strong>Sorry No Scholarship Available </strong></h2>
+    {% endif %}
+    <button type="button" onclick="window.location.href='/logout/' ">Logout</button>
+{% endblock %}
